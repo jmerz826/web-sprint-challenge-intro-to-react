@@ -14,7 +14,12 @@ const StyledDiv = styled.div`
 
 const Character = (props) => {
     const { character, currentCharacter } = props;
-    const curDetail = (character.name === currentCharacter.name) ? <Details currentCharacter={currentCharacter} /> : null;
+    let curDetail = null;
+    if (character.name === currentCharacter.name) {
+        curDetail = <Details
+            currentCharacter={currentCharacter}
+            closeDetails={props.closeDetails} />;
+    }
     return (
         <StyledDiv>
             <a>{character.name}</a>

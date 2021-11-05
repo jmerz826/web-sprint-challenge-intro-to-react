@@ -36,7 +36,11 @@ const App = () => {
     <div className="App">
       <h1 className="Header">Characters</h1>
       <div className="characters-content">
-        <Characters characterData={characterData} currentCharacter={currentCharacter} openDetails={openDetails} close={closeDetails} />
+        <Characters
+          characterData={characterData}
+          currentCharacter={currentCharacter}
+          openDetails={openDetails}
+          closeDetails={closeDetails} />
         {/* {currentCharacter && <Details currentCharacter={currentCharacter} close={closeDetails} characterData={characterData}/>} */}
       </div>
     </div>
