@@ -14,7 +14,12 @@ const Characters = (props) => {
     return (
         <div className='characters-wrapper'>
             {characterDataArray.map(c => {
-                return (<Character character={c} key={c.name} openDetails={props.openDetails} currentCharacter={props.currentCharacter} characterData={characterData}/>)
+                return (<Character
+                    character={c}
+                    key={c.name}
+                    openDetails={props.openDetails}
+                    closeDetails={props.closeDetails}
+                    currentCharacter={props.currentCharacter} />)
             })}
             {/* {currentCharacter && <Details currentCharacter={currentCharacter} close={closeDetails} characterData={characterData}/>} */}
         </div>

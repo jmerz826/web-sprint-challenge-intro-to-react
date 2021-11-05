@@ -14,16 +14,18 @@ const StyledDiv = styled.div`
 
 const Character = (props) => {
     const { character, currentCharacter } = props;
-    let curDetail = null;
-    if (character.name === currentCharacter.name) {
-        curDetail = <Details
-            currentCharacter={currentCharacter}
-            closeDetails={props.closeDetails} />;
-    }
+    console.log(currentCharacter);
+    // if (character.name === currentCharacter.name) {
+    //     const curDetail = <Details
+    //         currentCharacter={currentCharacter}
+    //         closeDetails={props.closeDetails} />;
+    // }
     return (
         <StyledDiv>
             <a>{character.name}</a>
-            {curDetail}
+            {currentCharacter && character.name === currentCharacter.name ? <Details
+            currentCharacter={currentCharacter}
+            closeDetails={props.closeDetails} /> : null}
             <button onClick={() => props.openDetails(character)} >See details </button>
         </StyledDiv>
     );
