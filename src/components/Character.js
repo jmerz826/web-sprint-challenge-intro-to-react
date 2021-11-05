@@ -50,25 +50,23 @@ const StyledTab = styled.div`
 `
 
 const Character = (props) => {
+    // use prop nomenclature in local function, for simplicity and readability
     const { character, currentCharacter } = props;
-    // console.log(currentCharacter);
-    // if (character.name === currentCharacter.name) {
-    //     const curDetail = <Details
-    //         currentCharacter={currentCharacter}
-    //         closeDetails={props.closeDetails} />;
-    // }
     return (
         <StyledDiv>
             <StyledTab>
                 <h3>{character.name}</h3>
                 <button onClick={() => {
+                    // button will select a character and display the new choice's details if there is not currently a character chosen
                     if (!currentCharacter) {
                         props.openDetails(character)
                     } else {
                         props.closeDetails();
                     }
-                }}>{!currentCharacter? '+' : '-' }</button>
+                    // Buttons will display + if there is a details section open, - if there is not
+                }}>{!currentCharacter? '+' : '-' }</button> 
             </StyledTab>
+            {/* Only invoke details if there is a character selected */}
             {currentCharacter && character.name === currentCharacter.name ? <Details
             currentCharacter={currentCharacter}
             closeDetails={props.closeDetails} /> : null}
