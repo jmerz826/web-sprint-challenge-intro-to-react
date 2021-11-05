@@ -3,16 +3,16 @@ import Character from './Character';
 
 const Characters = (props) => {
     const { characterData } = props;
-    console.log(characterData);
 
+    // React was not 
+    const characterDataArray = Array.from(characterData);
     return (
         <div className='characters-wrapper'>
-        <h1>hi, just test. delete soon</h1>
-            {characterData.map(char => {
-                return <Character character={char}/>
-            })}
+            {characterDataArray.map(c => {
+                return <Character character={c} key={c.mass} />
+           })}
         </div>
-    )
-}
+    );
+};
 
 export default Characters;
