@@ -2,15 +2,12 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
 import Characters from './components/Characters.js';
-import styled from 'styled-components';
-import Details from './details';
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
   const [characterData, setCharacterData] = useState({});
   const [currentCharacter, setCurrentCharacter] = useState(null);
-  const [currentDetails, setCurrentDetails] = useState('');
 
   const openDetails = name => {
     setCurrentCharacter(name);

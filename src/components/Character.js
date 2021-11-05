@@ -22,7 +22,7 @@ const Character = (props) => {
     // }
     return (
         <StyledDiv>
-            <a>{character.name}</a>
+            <h3>{character.name}</h3>
             {currentCharacter && character.name === currentCharacter.name ? <Details
             currentCharacter={currentCharacter}
             closeDetails={props.closeDetails} /> : null}
