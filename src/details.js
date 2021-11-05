@@ -1,10 +1,29 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+
+const StyledDetails = styled.div`
+    /* background-color:orange; */
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    background-color: rgba(255,153,51,0.8);
+
+    ul{
+        display: inline-block;
+        text-align:center;
+        list-style-position: inside;
+        padding: 1%;
+    }
+
+`
 
 const Details = (props) => {
     const { currentCharacter, closeDetails } = props;
     const [currentCharacterHomeworld, setCurrentCharacterHomeworld] = useState(null);
 
+    // Obtains selected character's home planet
     useEffect(() => {
         axios.get(currentCharacter.homeworld)
             .then(res => {
@@ -13,8 +32,10 @@ const Details = (props) => {
             .catch(err => console.error(err))
     }, [currentCharacter])
 
+
+
     return (
-        <div className="character-details-block">
+        <StyledDetails>
             <ul>
                 <li>Name: {currentCharacter.name}</li>
                 <li>Gender: {currentCharacter.gender}</li>
@@ -27,7 +48,7 @@ const Details = (props) => {
                 <li>Home Planet: {currentCharacterHomeworld}</li>
             </ul>
             <button onClick={closeDetails}>Close Details</button>
-        </div>
+        </StyledDetails>
     )
 }
 

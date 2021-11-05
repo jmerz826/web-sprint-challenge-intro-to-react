@@ -5,11 +5,48 @@ import Details from "../details";
 // import Details from "../details";
 
 const StyledDiv = styled.div`
-    background-color:rgba(0,0,255, 0.2);
+    /* background-color:rgba(0,0,255, 0.2); */
     display:flex;
     flex-direction: column;
+    align-items:center;
     flex-wrap: nowrap;
+    padding:1%;
 
+    button{
+        display: inline-block;
+        background-color:lightgray;
+        border: 1px solid black;
+    }
+
+    h3 {
+        display:inline-block;
+        font-size:1.6rem;
+        text-align:center;
+    }
+`
+const StyledTab = styled.div`
+    display:flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content:space-between;
+    width: 75%;
+    background-color: rgb(45,143,209);
+    border-radius:30000px;
+    border: 5px solid darkblue;
+    position: relative;
+
+    h3{
+        width: 50%;
+        margin-left: 10%;
+    }
+
+    button{
+        position:absolute;
+        border-radius: 3333333px;
+        height:100%;
+        width:20%;
+        right:0;
+    }
 `
 
 const Character = (props) => {
@@ -22,11 +59,14 @@ const Character = (props) => {
     // }
     return (
         <StyledDiv>
-            <h3>{character.name}</h3>
+            <StyledTab>
+                <h3>{character.name}</h3>
+                <button onClick={() => props.openDetails(character)} >+</button>
+            </StyledTab>
             {currentCharacter && character.name === currentCharacter.name ? <Details
             currentCharacter={currentCharacter}
             closeDetails={props.closeDetails} /> : null}
-            <button onClick={() => props.openDetails(character)} >See details </button>
+            
         </StyledDiv>
     );
 
