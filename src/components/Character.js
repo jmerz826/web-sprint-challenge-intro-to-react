@@ -14,10 +14,11 @@ const StyledDiv = styled.div`
 
 const Character = (props) => {
     const { character, currentCharacter } = props;
+    const curDetail = (character.name === currentCharacter.name) ? <Details currentCharacter={currentCharacter} /> : null;
     return (
         <StyledDiv>
             <a>{character.name}</a>
-            {currentCharacter ? <Details currentCharacter={currentCharacter}/> : null}
+            {curDetail}
             <button onClick={() => props.openDetails(character)} >See details </button>
         </StyledDiv>
     );

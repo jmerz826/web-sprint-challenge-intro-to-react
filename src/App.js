@@ -10,10 +10,15 @@ const App = () => {
   // the state properties here.
   const [characterData, setCharacterData] = useState({});
   const [currentCharacter, setCurrentCharacter] = useState(null);
+  const [currentDetails, setCurrentDetails] = useState('');
 
-  const openDetails = name => setCurrentCharacter(name);
+  const openDetails = name => {
+    setCurrentCharacter(name);
+  };
   const closeDetails = () => setCurrentCharacter(null);
-  console.log(typeof currentCharacter);
+  console.log(currentCharacter);
+
+
 
   // Fetch characters from the API in an effect hook. Remember, anytime you have a 
   // side effect in a component, you want to think about which state and/or props it should
