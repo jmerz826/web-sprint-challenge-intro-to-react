@@ -61,7 +61,13 @@ const Character = (props) => {
         <StyledDiv>
             <StyledTab>
                 <h3>{character.name}</h3>
-                <button onClick={() => props.openDetails(character)} >+</button>
+                <button onClick={() => {
+                    if (!currentCharacter) {
+                        props.openDetails(character)
+                    } else {
+                        props.closeDetails();
+                    }
+                }}>+</button>
             </StyledTab>
             {currentCharacter && character.name === currentCharacter.name ? <Details
             currentCharacter={currentCharacter}

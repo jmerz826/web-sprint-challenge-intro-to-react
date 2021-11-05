@@ -28,6 +28,7 @@ const Details = (props) => {
         axios.get(currentCharacter.homeworld)
             .then(res => {
                 setCurrentCharacterHomeworld(res.data.name);
+                
             })
             .catch(err => console.error(err))
     }, [currentCharacter])
@@ -35,7 +36,7 @@ const Details = (props) => {
 
 
     return (
-        <StyledDetails>
+        <StyledDetails onDoubleClick={closeDetails}>
             <ul>
                 <li>Name: {currentCharacter.name}</li>
                 <li>Gender: {currentCharacter.gender}</li>
