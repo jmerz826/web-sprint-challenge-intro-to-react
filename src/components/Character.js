@@ -67,7 +67,7 @@ const Character = (props) => {
                     } else {
                         props.closeDetails();
                     }
-                }}>+</button>
+                }}>{!currentCharacter? '+' : '-' }</button>
             </StyledTab>
             {currentCharacter && character.name === currentCharacter.name ? <Details
             currentCharacter={currentCharacter}

@@ -1,44 +1,42 @@
+// Import frameworks
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
 import Characters from './components/Characters.js';
 
 const App = () => {
-  // Try to think through what state you'll need for this app before starting. Then build out
-  // the state properties here.
+  // Declare useStates, to be modulated later
   const [characterData, setCharacterData] = useState({});
   const [currentCharacter, setCurrentCharacter] = useState(null);
 
+  // Create open and close functions, to be used for details component
   const openDetails = name => {
     setCurrentCharacter(name);
   };
   const closeDetails = () => setCurrentCharacter(null);
-  // console.log(currentCharacter);
 
 
-
-  // Fetch characters from the API in an effect hook. Remember, anytime you have a 
-  // side effect in a component, you want to think about which state and/or props it should
-  // sync up with, if any.
+  // Fetches characters from the API
   useEffect(() => {
     axios.get(`https://swapi.dev/api/people`)
       .then(res => {
-        // console.log(res.data);
+        // sets character data to info received from API call
         setCharacterData(res.data);
       })
       .catch(err => console.error(err))
-  }, [currentCharacter])
+  }, [currentCharacter]) // useEffect will be invoked each time the currentCharacter state changes
 
   return (
     <div className="App">
-      <h1 className="Header">⭐⚔️🪐🛸🌌 Star Wars Characters! ⭐⚔️🪐🛸🌌</h1>
+      {/* title */}
+      <h1 className="Header">⭐⚔️🪐🛸🌌 Star Wars Characters! ⭐⚔️🪐🛸🌌</h1> 
       <div className="characters-content">
+        {/* insert Characters with appropriate props being passed down */}
         <Characters
           characterData={characterData}
           currentCharacter={currentCharacter}
           openDetails={openDetails}
           closeDetails={closeDetails} />
-        {/* {currentCharacter && <Details currentCharacter={currentCharacter} close={closeDetails} characterData={characterData}/>} */}
       </div>
     </div>
   );

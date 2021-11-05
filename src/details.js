@@ -1,7 +1,9 @@
-import React, {useState, useEffect} from 'react';
+// import frameworks
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
+//styling the container
 const StyledDetails = styled.div`
     /* background-color:orange; */
     display:flex;
@@ -15,8 +17,20 @@ const StyledDetails = styled.div`
         text-align:center;
         list-style-position: inside;
         padding: 1%;
+        margin-top:1%;
+    }
+    button{
+        width: 100%;
+        border: none;
+        padding: 1%;
+        background-color: rgb(45,143,209);
     }
 
+    h4{
+        margin-bottom: 0;
+        font-size:1.25rem;
+        text-decoration: underline;
+    }
 `
 
 const Details = (props) => {
@@ -28,15 +42,15 @@ const Details = (props) => {
         axios.get(currentCharacter.homeworld)
             .then(res => {
                 setCurrentCharacterHomeworld(res.data.name);
-                
             })
             .catch(err => console.error(err))
-    }, [currentCharacter])
+    }, [currentCharacter]) //Only invoked when character selection changes
 
 
 
     return (
-        <StyledDetails onDoubleClick={closeDetails}>
+        <StyledDetails onDoubleClick={closeDetails}> {/*Double clicking anywhere on the details section will close the details*/}
+            <h4>Character Details:</h4>
             <ul>
                 <li>Name: {currentCharacter.name}</li>
                 <li>Gender: {currentCharacter.gender}</li>
@@ -48,7 +62,7 @@ const Details = (props) => {
                 <li>Skin Color: {currentCharacter.skin_color}</li>
                 <li>Home Planet: {currentCharacterHomeworld}</li>
             </ul>
-            <button onClick={closeDetails}>Close Details</button>
+            <button onClick={closeDetails}>Close Details</button> {/*Closes details upon click*/}
         </StyledDetails>
     )
 }
