@@ -14,7 +14,7 @@ const StyledDiv = styled.div`
 
 const Character = (props) => {
     const { character, currentCharacter } = props;
-    console.log(currentCharacter);
+    // console.log(currentCharacter);
     // if (character.name === currentCharacter.name) {
     //     const curDetail = <Details
     //         currentCharacter={currentCharacter}

@@ -3,7 +3,8 @@ import axios from 'axios';
 
 const Details = (props) => {
     const { currentCharacter, closeDetails } = props;
-    console.log(currentCharacter.name)
+    // console.log(currentCharacter.name)
+    // console.log(closeDetails);
     return (
         <div className="character-details-block">
             <ul>
@@ -13,6 +14,7 @@ const Details = (props) => {
                 <li>Weight: {currentCharacter.mass} kg</li>
                 <li>Films appeared in: {currentCharacter.films.join(', ')}</li>
             </ul>
+            <button onClick={closeDetails}>Close Details</button>
         </div>
     )
 }

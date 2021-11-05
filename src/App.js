@@ -16,7 +16,7 @@ const App = () => {
     setCurrentCharacter(name);
   };
   const closeDetails = () => setCurrentCharacter(null);
-  console.log(currentCharacter);
+  // console.log(currentCharacter);
 
 
 
